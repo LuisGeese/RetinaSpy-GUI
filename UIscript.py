@@ -93,11 +93,11 @@ def start_tkinter_app():
             display_app = DisplayWindow()
             display_app.mainloop()
         elif user_entry.get() == username and user_pass.get() != password:
-            messagebox.showwarning(title='Wrong password', message='Please check your password')
+            messagebox.showwarning(title='Wrong password', message='Please check your password', parent=app)
         elif user_entry.get() != username and user_pass.get() == password:
-            messagebox.showwarning(title='Wrong username', message='Please check your username')
+            messagebox.showwarning(title='Wrong username', message='Please check your username', parent=app)
         else:
-            messagebox.showerror(title="Login Failed", message="Invalid Username and password")
+            messagebox.showerror(title="Login Failed", message="Invalid Username and password", parent=app)
 
     def set_current_active_entry(entry_widget):
         nonlocal current_active_entry
