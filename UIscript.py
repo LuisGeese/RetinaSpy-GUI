@@ -31,8 +31,8 @@ def load_and_smoothly_scale_image(path, target_width, target_height):
     return scaled_image
 
 # Adjust the scaling factor based on your full-screen resolution
-logo_5_path = "C:/Users/Frogs/Downloads/Color logo with background (5).svg"
-logo_6_path = "C:/Users/Frogs/Downloads/Color logo with background (6).svg"
+logo_5_path = "./Top Part Logo.svg"
+logo_6_path = "./Bottom part logo.svg"
 logo_5 = load_and_smoothly_scale_image(logo_5_path, screen_width * 3.5 // 4, screen_height * 3.5 // 4)
 logo_6 = load_and_smoothly_scale_image(logo_6_path, screen_width * 3.5 // 4, screen_height * 3.5 // 4)
 
@@ -355,15 +355,13 @@ def start_tkinter_app():
             class Dialog(QDialog):
                 def __init__(self):
                     super().__init__()
-                    self.setWindowFlags(Qt.FramelessWindowHint)
-                    self.leftEyeImage = "C:/Users/Frogs/Downloads/Example.jpg"
-                    self.rightEyeImage = "C:/Users/Frogs/Downloads/Example2.jpg"
+                    self.leftEyeImage = "./Left Eye.jpg"
+                    self.rightEyeImage = "./Right Eye.jpg"
                     self.currentImage = self.leftEyeImage
 
                     self.dial = CustomDial(self, self.currentImage)
                     self.initUI()
-                    self.showFullScreen()
-
+                    
                 def initUI(self):
                     self.slider = QSlider(Qt.Horizontal)
                     self.slider.setMinimum(0)
@@ -496,9 +494,11 @@ def start_tkinter_app():
                         }
 
                     """)
-
-                self.dialog = Dialog()
-                self.dialog.show()
+                    
+                dialog = Dialog()
+                dialog.showFullScreen()
+                sys.exit(app.exec())
+                
 
     class PatientInformationWindow(ctk.CTk):
         ctk.set_appearance_mode("Dark")
