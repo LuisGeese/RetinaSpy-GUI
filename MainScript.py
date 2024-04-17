@@ -529,7 +529,6 @@ def start_tkinter_app():
 
                dialog = Dialog()
                dialog.show()
-               sys.exit(app.exec())
            self.dialog = Dialog()
            self.dialog.show()
 

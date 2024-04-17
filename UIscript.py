@@ -89,7 +89,6 @@ def start_tkinter_app():
         password = "12345"
 
         if user_entry.get() == username and user_pass.get() == password:
-            messagebox.showinfo(title="Login Successful", message="You have logged in Successfully")
             app.destroy()
             display_app = DisplayWindow()
             display_app.mainloop()
@@ -355,6 +354,8 @@ def start_tkinter_app():
             class Dialog(QDialog):
                 def __init__(self):
                     super().__init__()
+                    self.setWindowFlags(Qt.FramelessWindowHint)
+                    self.setFixedSize(1280, 720)
                     self.leftEyeImage = "./Left Eye.jpg"
                     self.rightEyeImage = "./Right Eye.jpg"
                     self.currentImage = self.leftEyeImage
@@ -494,11 +495,11 @@ def start_tkinter_app():
                         }
 
                     """)
-                    
+
                 dialog = Dialog()
-                dialog.showFullScreen()
-                sys.exit(app.exec())
-                
+                dialog.show()
+                self.dialog = Dialog()
+                self.dialog.show()
 
     class PatientInformationWindow(ctk.CTk):
         ctk.set_appearance_mode("Dark")
@@ -539,23 +540,23 @@ def start_tkinter_app():
             self.genderLabel = ctk.CTkLabel(self, text="Gender", font=("Lato", 50))
             self.genderLabel.grid(row=2, column=0, padx=(10, 70), pady=5, sticky="ew")
             self.genderVar = tk.StringVar(value="Other")
-            self.maleRadioButton = ctk.CTkRadioButton(self, text="Male", font=("Lato", 50), variable=self.genderVar, value="Male")
+            self.maleRadioButton = ctk.CTkRadioButton(self, text="Male", font=("Lato", 30), variable=self.genderVar, value="Male")
             self.maleRadioButton.grid(row=2, column=1, padx=(10, 70), pady=5, sticky="ew")
-            self.femaleRadioButton = ctk.CTkRadioButton(self, text="Female", font=("Lato", 50), variable=self.genderVar, value="Female")
+            self.femaleRadioButton = ctk.CTkRadioButton(self, text="Female", font=("Lato", 30), variable=self.genderVar, value="Female")
             self.femaleRadioButton.grid(row=2, column=2, padx=(10, 70), pady=5, sticky="ew")
-            self.noneRadioButton = ctk.CTkRadioButton(self, text="Other", font=("Lato", 50), variable=self.genderVar,
+            self.noneRadioButton = ctk.CTkRadioButton(self, text="Other", font=("Lato", 30), variable=self.genderVar,
                                                       value="Prefer not to say")
             self.noneRadioButton.grid(row=2, column=3, padx=(10, 70), pady=5, sticky="ew")
 
             self.choiceLabel = ctk.CTkLabel(self, text="Results", font=("Lato", 50))
             self.choiceLabel.grid(row=3, column=0, padx=(10, 70), pady=5, sticky="ew")
             self.checkboxVar = tk.StringVar(value="Choice 1")
-            self.choice1 = ctk.CTkCheckBox(self, text="DR", font=("Lato", 50), variable=self.checkboxVar, onvalue="choice1", offvalue="c1")
+            self.choice1 = ctk.CTkCheckBox(self, text="DR", font=("Lato", 30), variable=self.checkboxVar, onvalue="choice1", offvalue="c1")
             self.choice1.grid(row=3, column=1, padx=(10, 70), pady=5, sticky="ew")
-            self.choice2 = ctk.CTkCheckBox(self, text="No DR", font=("Lato", 50), variable=self.checkboxVar, onvalue="choice2",
+            self.choice2 = ctk.CTkCheckBox(self, text="No DR", font=("Lato", 30), variable=self.checkboxVar, onvalue="choice2",
                                            offvalue="c2")
             self.choice2.grid(row=3, column=2, padx=(10, 70), pady=5, sticky="ew")
-            self.choice3 = ctk.CTkCheckBox(self, text="Consultation Needed", font=("Lato", 50), variable=self.checkboxVar,
+            self.choice3 = ctk.CTkCheckBox(self, text="Consultation Needed", font=("Lato", 30), variable=self.checkboxVar,
                                            onvalue="choice3", offvalue="c3")
             self.choice3.grid(row=3, column=3, padx=10, pady=5, sticky="ew")
 
