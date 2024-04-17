@@ -92,16 +92,14 @@ def start_tkinter_app():
             app.destroy()
             display_app = DisplayWindow()
             display_app.mainloop()
-        elif user_entry.get() == username and user_pass.get() != password:
-            messagebox.showwarning(title='Wrong password', message='Please check your password', parent=app)
-        elif user_entry.get() != username and user_pass.get() == password:
-            messagebox.showwarning(title='Wrong username', message='Please check your username', parent=app)
         else:
-            messagebox.showerror(title="Login Failed", message="Invalid Username and password", parent=app)
+            messagebox.showerror("Login Failed", "Invalid username or password", parent=app)
 
     def set_current_active_entry(entry_widget):
         nonlocal current_active_entry
         current_active_entry = entry_widget
+        current_active_entry.focus_set()
+
 
     def keyboard_action(key):
         if current_active_entry:
@@ -119,11 +117,11 @@ def start_tkinter_app():
 
     user_entry = ctk.CTkEntry(master=frame, placeholder_text="Username", height=80, width=500, font=("Lato", 50))
     user_entry.pack(pady=10, padx=10)
-    user_entry.bind("<FocusIn>", lambda event: set_current_active_entry(user_entry))
+    user_entry.bind("<Button-1>", lambda event: set_current_active_entry(user_entry))
 
     user_pass = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*", height=80, width=500, font=("Lato", 50))
     user_pass.pack(pady=10, padx=10)
-    user_pass.bind("<FocusIn>", lambda event: set_current_active_entry(user_pass))
+    user_pass.bind("<Button-1>", lambda event: set_current_active_entry(user_pass))
 
     button = ctk.CTkButton(master=frame, text='Login', command=login, height=80, width=500, font=("Lato", 50))
     button.pack(pady=10, padx=10)
