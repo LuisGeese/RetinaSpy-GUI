@@ -85,8 +85,8 @@ def start_tkinter_app():
     current_active_entry = None
 
     def login():
-        username = "pp"
-        password = "12"
+        username = "p"
+        password = "1"
 
         if user_entry.get() == username and user_pass.get() == password:
             app.destroy()
