@@ -580,7 +580,7 @@ def start_tkinter_app():
                 for key in row:
                     btn = ctk.CTkButton(master=row_frame, text=key, width=200 if key in ["Space", "Backspace"] else 90,
                                         height=80,
-                                        command=lambda k=key: keyboard_action(k), font=("Lato", 50))
+                                        command=lambda k=key: self.keyboard_action(k), font=("Lato", 50))
                     btn.pack(side='left', expand=True if key in ["Space", "Backspace"] else False,
                              fill='x' if key in ["Space", "Backspace"] else None, padx=5)
 
