@@ -117,11 +117,11 @@ def start_tkinter_app():
 
     user_entry = ctk.CTkEntry(master=frame, placeholder_text="Username", height=80, width=500, font=("Lato", 50))
     user_entry.pack(pady=10, padx=10)
-    user_entry.bind("<Button-1>", lambda event: set_current_active_entry(user_entry))
+    user_entry.bind("<FocusIn>", lambda event: set_current_active_entry(user_entry))
 
     user_pass = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*", height=80, width=500, font=("Lato", 50))
     user_pass.pack(pady=10, padx=10)
-    user_pass.bind("<Button-1>", lambda event: set_current_active_entry(user_pass))
+    user_pass.bind("<FocusIn>", lambda event: set_current_active_entry(user_pass))
 
     button = ctk.CTkButton(master=frame, text='Login', command=login, height=80, width=500, font=("Lato", 50))
     button.pack(pady=10, padx=10)
