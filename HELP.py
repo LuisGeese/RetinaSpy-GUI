@@ -78,7 +78,6 @@ def start_tkinter_app():
     ctk.set_default_color_theme("green")
 
     app = ctk.CTk()
-    app.overrideredirect(True)
     app.geometry("1280x720")
     app.title("RetinaSpy")
 
