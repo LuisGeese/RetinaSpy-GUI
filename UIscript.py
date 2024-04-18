@@ -5,8 +5,8 @@ import tkinter as tk
 from tkinter import messagebox
 from PySide6.QtWidgets import QApplication, QDialog, QVBoxLayout, QHBoxLayout, QDialogButtonBox, \
     QProgressBar, QSlider, \
-    QDial, QPushButton, QLabel
-from PySide6.QtGui import QPainter, QPixmap, QBitmap
+    QDial, QPushButton, QLabel, QSpacerItem, QSizePolicy
+from PySide6.QtGui import QPainter, QPixmap, QBitmap, QFont
 from PySide6.QtCore import Qt
 
 
@@ -366,17 +366,20 @@ def start_tkinter_app():
                     self.slider.setMinimum(0)
                     self.slider.setMaximum(100)
                     self.slider.setValue(0)
-                    self.slider.setFixedWidth(640)
+                    self.slider.setFixedWidth(600)
 
                     self.progressBar = QProgressBar()
                     self.progressBar.setMinimum(0)
                     self.progressBar.setMaximum(100)
                     self.progressBar.setValue(0)
-                    self.progressBar.setFixedWidth(640)
+                    self.progressBar.setFixedWidth(600)
                     self.progressBar.setTextVisible(False)
 
                     self.progressLabel = QLabel("0%")
-                    self.progressLabel.setFixedWidth(70)
+                    font = QFont("Lato", 28)  # Change "Arial" to your preferred font and "16" to your desired size
+                    self.progressLabel.setFont(font)
+                    self.progressLabel.setStyleSheet("color: white;")
+                    self.progressLabel.setFixedWidth(98)
 
                     self.slider.valueChanged.connect(self.dial.setValue)
                     self.dial.valueChanged.connect(self.progressBar.setValue)
@@ -402,6 +405,8 @@ def start_tkinter_app():
 
                     mainLayout = QHBoxLayout()
                     controlsLayout = QVBoxLayout()
+                    controlsLayout.setSpacing(20)
+                    controlsLayout.setContentsMargins(20, 0, 0, 40)
                     controlsLayout.addWidget(self.dial)
                     controlsLayout.addWidget(self.slider)
                     progressLayout = QHBoxLayout()
@@ -451,8 +456,8 @@ def start_tkinter_app():
                             border-radius: 2px;
                             padding: 10px;
                             min-height: 80px;
-                            min-width: 500px; /* Minimum width of the button */
-                            max-width: 500px; /* Maximum width of the button */
+                            min-width: 450px; /* Minimum width of the button */
+                            max-width: 450px; /* Maximum width of the button */
                             color: #ffffff; /* White text */
                             font-size: 50px;  /* Set font size directly in stylesheet */
                             font-family: 'Lato';  /* Set font family directly in stylesheet */
@@ -478,23 +483,20 @@ def start_tkinter_app():
                         }
                         QSlider::groove:horizontal {
                             border: 1px solid #999999;
-                            height: 32px;
+                            height: 40px;
                             background: #3a3a3a;
                             margin: 2px 0;
                         }
                         QSlider::handle:horizontal {
                             background: #bcbcbc;
                             border: 1px solid #5c5c5c;
-                            width: 54px;
+                            width: 40px;
                             margin: -2px 0;
                             border-radius: 3px;
                         }
                     """)
 
                 dialog = Dialog()
-                dialog.show()
-                sys.exit(app.exec_())
-
     class PatientInformationWindow(ctk.CTk):
         ctk.set_appearance_mode("Dark")
         ctk.set_default_color_theme("green")
