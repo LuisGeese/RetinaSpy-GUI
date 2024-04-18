@@ -85,8 +85,8 @@ def start_tkinter_app():
     current_active_entry = None
 
     def login():
-        username = "retinaspy"
-        password = "12345"
+        username = "pp"
+        password = "12"
 
         if user_entry.get() == username and user_pass.get() == password:
             app.destroy()
@@ -360,7 +360,7 @@ def start_tkinter_app():
 
                     self.dial = CustomDial(self, self.currentImage)
                     self.initUI()
-                    
+
                 def initUI(self):
                     self.slider = QSlider(Qt.Horizontal)
                     self.slider.setMinimum(0)
@@ -431,8 +431,6 @@ def start_tkinter_app():
                     self.rightEyeButton.setDisabled(True)
                     self.leftEyeButton.setEnabled(True)
 
-                    self.exitButton.clicked.connect(self.close)
-
             if __name__ == '__main__':
                 import sys
 
@@ -491,13 +489,11 @@ def start_tkinter_app():
                             margin: -2px 0;
                             border-radius: 3px;
                         }
-
                     """)
 
                 dialog = Dialog()
                 dialog.show()
-                self.dialog = Dialog()
-                self.dialog.show()
+                sys.exit(app.exec_())
 
     class PatientInformationWindow(ctk.CTk):
         ctk.set_appearance_mode("Dark")
