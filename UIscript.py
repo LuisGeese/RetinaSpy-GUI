@@ -502,7 +502,8 @@ def start_tkinter_app():
                         }
                     """)
 
-                dialog = Dialog()
+                self.dialog = Dialog()
+                self.dialog.show()
     class PatientInformationWindow(ctk.CTk):
         ctk.set_appearance_mode("Dark")
         ctk.set_default_color_theme("green")
