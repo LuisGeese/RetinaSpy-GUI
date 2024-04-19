@@ -100,15 +100,21 @@ def start_tkinter_app():
         current_active_entry = entry_widget
         current_active_entry.focus_set()
 
+    def touch_to_focus(entry_widget):
+        def focus(event):
+            set_current_active_entry(entry_widget)
+        return focus
+
 
     def keyboard_action(key):
         if current_active_entry:
+            current_text = current_active_entry.get()
             if key == "Backspace":
-                current_text = current_active_entry.get()[:-1]
+                current_text = current_text[:-1]
             elif key == "Space":
-                current_text = current_active_entry.get() + " "
+                current_text += " "
             else:
-                current_text = current_active_entry.get() + key
+                current_text += key
             current_active_entry.delete(0, tk.END)
             current_active_entry.insert(0, current_text)
 
